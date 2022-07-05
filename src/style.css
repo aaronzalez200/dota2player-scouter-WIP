@@ -1,0 +1,206 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+    padding: 0px;
+}    
+
+body {
+    background-color: #E1E2E2;
+}
+.Navbar {
+    background-color: #1D2228;
+    padding: 20px;
+    color: #E1E2E2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 65px;
+}
+
+.Links {
+    list-style: none;
+    color: #E1E2E2;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.Links li {
+    display: inline-block;
+    padding: 0px 10px;
+}
+
+.Links li a {
+    color: #E1E2E2;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Roboto';    
+    transition: all 0.3s ease 0s;
+}
+
+.Links li a:hover {
+    color: #FB8122
+}
+
+.Title {
+    font-size: 35px;
+}
+
+.profile-info {
+    display: grid;
+    gap: 1rem;
+    height: 90vh;
+    margin: 10px;
+    grid-template-columns: auto 50%;
+    grid-template-rows: 75% 20% 20% 75% 20% 20% 75%;
+    grid-template-areas:
+        "profile profile"
+        "submit submit"
+        "pub-matches pub-matches"
+        "pub1 pub2"
+        "logo logo"
+        "e-matches e-matches"
+        "e1 e2"
+        ;
+}
+
+.profile {
+    display: grid;
+    grid-area: profile;
+    border-radius: 10px;
+    background-color: #1D2228;
+}
+
+.User-Image {
+    height: 70%;
+    margin-top: 20px;
+    border-radius: 50%;
+    justify-self: center;
+    color: #FB8122;
+    border: 5px;
+    border-style: solid;
+}
+
+.Player-Name {
+    color: #FB8122;
+    margin-top: -30px;
+    padding-left: 15px;
+    font-size: 18px;
+}
+
+.recent {
+    display: grid;
+    grid-area: recent;
+    border-radius: 10px;
+    background-color: #1D2228;
+}
+
+.submission {
+    display: grid;
+    grid-area: submit;
+    align-items: center;
+    justify-items: center;
+    color: white;
+    border-radius: 10px;
+    background-color: #1D2228;
+}
+
+.public-matches {
+    display: grid;
+    grid-area: pub-matches;
+    align-items: center;
+    justify-items: center;
+    color: white;
+    border-radius: 10px;
+    background-color: #1D2228;
+}
+
+.public-data1 {
+    display: grid;
+    grid-area: pub1;
+    align-items: center;
+    justify-items: center;
+    color: white;
+    border-radius: 10px;
+    background-color: #1D2228;
+}
+.public-data2 {
+    display: grid;
+    grid-area: pub2;
+    align-items: center;
+    justify-items: center;
+    color: white;
+    border-radius: 10px;
+    background-color: #1D2228;
+}
+
+.esports-matches {
+    display: grid;
+    grid-area: e-matches;
+    align-items: center;
+    justify-items: center;
+    color: white;
+    border-radius: 10px;
+    background-color: #1D2228;
+}
+
+.esports-data1 {
+    display: grid;
+    grid-area: e1;
+    align-items: center;
+    justify-items: center;
+    color: white;
+    border-radius: 10px;
+    background-color: #1D2228;
+}
+
+.logo {
+    display: grid;
+    grid-area: logo;
+    align-items: center;
+    justify-items: center;
+    color: white;
+    border-radius: 10px;
+    background-color: #1D2228;  
+}
+.esports-data2 {
+    display: grid;
+    grid-area: e2;
+    align-items: center;
+    justify-items: center;
+    color: white;
+    border-radius: 10px;
+    background-color: #1D2228;
+}
+
+.Submit {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    color: white;
+    padding: 9px 25px;
+    background-color: #FB8122;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.Submit:hover {
+    background-color: white;
+}
+
+
+@media(min-width: 1000px) {
+    .profile-info {
+        display: grid;
+        gap: 1rem;
+        height: 90vh;
+        grid-template-columns: repeat(4, 20%) auto;
+        grid-template-rows: 10% 20% auto;
+        grid-template-areas:
+            "profile submit submit logo logo"
+            "profile pub-matches pub-matches e-matches e-matches"
+            "recent pub1 pub2 e1 e2"
+    }
+}

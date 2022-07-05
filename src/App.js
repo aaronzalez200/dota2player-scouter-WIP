@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Navbar from './components/navbar';
+import Profile from './components/profile';
 
-function App() {
+export default function App() {
+  // fetching player data
+  const [dota2Data, setDota2Data] = React.useState()
+  React.useEffect(function() {
+    fetch("https://api.opendota.com/api/players/129050083")
+        .then(res => res.json())
+        .then(data => setDota2Data(data))
+}, []) 
+
+  if(dota2Data === undefined) return <>loading...</>
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+        <Navbar />
+        <Profile image={dota2Data.profile.avatarfull} userData={dota2Data.profile.personaname}/>
     </div>
-  );
+  )
 }
-
-export default App;
