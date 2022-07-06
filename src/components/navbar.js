@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function Navbar() {
+    const [Lane, setLane] = React.useState('1');
 
     return (
         <nav className="Navbar">   
@@ -13,9 +14,7 @@ export default function Navbar() {
             <h1 className="Title">
                 Dota 2 Player Scouter
             </h1>
-            <button className="Submit">
-                --Select Role--
-            </button>
+           
         </nav>
     )
 }

@@ -15,7 +15,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 65px;
+    height: 45px;
 }
 
 .Links {
@@ -69,8 +69,8 @@ body {
     grid-area: profile; 
     border-radius: 10px;
     background-color: #1D2228;
-    grid-template-columns: 20% 80%;
-    grid-template-rows: 70% auto;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 70% 30%;
     grid-template-areas:
         "img img"
         "rank name"
@@ -91,18 +91,17 @@ body {
     grid-area: name;
     word-wrap: break-word;
     color: #FB8122;
-    align-self: center;
     font-size: 2vw;
-    padding: 5%;
+    padding-left: 10px;
     overflow: hidden;
 }
 
 .User-Badge { 
     grid-area: rank;
-    width: 100%;
+    width: 4vw;
     justify-self: center;
-    padding-left: 10%;
     align-self: center;
+    margin-bottom: 20px;
 }
 
 .recent {
@@ -190,22 +189,79 @@ body {
     background-color: #1D2228;
 }
 
-.Submit {
+.Match {
     display: grid;
-    align-items: center;
-    justify-items: center;
     color: white;
-    padding: 9px 25px;
+    grid-template-columns: 10% auto;
+    grid-template-rows: 50%;
+    grid-template-areas: 
+        "hero-img hero-info"
+        ;
+}
+
+.hero-img {
+    grid-area: hero-img;
+    padding-left: 20px;
+    width: 50px;
+    justify-self: center;
+    align-self: center;
+}
+
+.hero-info {
+    grid-area: hero-info;
+    justify-self: center;
+    align-self: center;
+    font-size: 1vw;
+}
+
+.recent-title {
+    color:#FB8122;
+    font-size: 20px;
+    padding: 20px;
+    justify-self: center;
+}
+
+.submission {
+    grid-template-columns: 30% auto;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "description entry"
+    ;
+}
+
+.sub-description {
+    grid-area: description;
+    color:#FB8122;
+    font-size: 2vh;
+}
+
+.input-here {
+    grid-area: entry;
+    width: 90%;
+    height: 25px;
+    border-style: solid;
+    border-color:#FB8122;
+    border-width: 2px;
+}
+
+.Submit {
+    text-align: center;
+    width: 150px;
+    color:#E1E2E2;
+    font-size: 20px;
+    padding: 3px 10px;
     background-color: #FB8122;
     border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }
-
 .Submit:hover {
-    background-color: white;
+    background-color:#E1E2E2;
+    color:#FB8122;
+    text-align: center;
 }
+
 
 
 
@@ -215,7 +271,7 @@ body {
         gap: 1rem;
         height: 90vh;
         grid-template-columns: repeat(4, 20%) auto;
-        grid-template-rows: 10% 20% auto;
+        grid-template-rows: 10% 13% auto;
         grid-template-areas:
             "profile submit submit logo logo"
             "profile pub-matches pub-matches e-matches e-matches"
