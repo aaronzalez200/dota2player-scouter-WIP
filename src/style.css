@@ -64,29 +64,45 @@ body {
         "e1 e2"
         ;
 }
-
 .profile {
     display: grid;
-    grid-area: profile;
+    grid-area: profile; 
     border-radius: 10px;
     background-color: #1D2228;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 70% auto;
+    grid-template-areas:
+        "img img"
+        "rank name"
+    ;
 }
 
 .User-Image {
-    height: 70%;
-    margin-top: 20px;
-    border-radius: 50%;
+    grid-area: img;
+    height: 80%;
+    align-self: center;
     justify-self: center;
+    border-radius: 50%;
     color: #FB8122;
-    border: 5px;
     border-style: solid;
 }
 
 .Player-Name {
+    grid-area: name;
+    word-wrap: break-word;
     color: #FB8122;
-    margin-top: -30px;
-    padding-left: 15px;
-    font-size: 18px;
+    align-self: center;
+    font-size: 2vw;
+    padding: 5%;
+    overflow: hidden;
+}
+
+.User-Badge { 
+    grid-area: rank;
+    width: 100%;
+    justify-self: center;
+    padding-left: 10%;
+    align-self: center;
 }
 
 .recent {
@@ -190,6 +206,7 @@ body {
 .Submit:hover {
     background-color: white;
 }
+
 
 
 @media(min-width: 1000px) {

@@ -10,9 +10,13 @@ export default function Profile(props) {
                     className="User-Image"
                     src={props.image} 
                 />
-                <div className="Player-Name">
-                    BadgeHere {props.userData}
-                </div>
+                <img 
+                    className="User-Badge"
+                    src={props.userBadge}
+                />
+                <h1 className="Player-Name">
+                    {props.userData}
+                </h1>
             </div> 
             <div className="recent">Recents Here</div>
             <div className="submission">Submission Here</div>

@@ -11,7 +11,7 @@ export default function Navbar() {
                 <li><a href="#">Contact</a></li>  
             </ul>
             <h1 className="Title">
-                Dota &nbsp;2 &nbsp;Player &nbsp;Scouter
+                Dota 2 Player Scouter
             </h1>
             <button className="Submit">
                 --Select Role--
