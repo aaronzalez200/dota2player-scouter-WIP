@@ -12,24 +12,30 @@ export default function App() {
   const [userRole, setUserRole] = React.useState(1);
   const [userInput, setUserInput] = React.useState(129050083);
   const [dota2Data, setDota2Data] = React.useState();
+  const [dota2DataHeroes, setDota2DataHeroes] = React.useState()
+  const [dota2RoleData, setDota2RoleData] = React.useState()
+  const [dota2RecentData, setDota2RecentData] = React.useState()
   // fetch player info
   React.useEffect(function() {
     fetch(`https://api.opendota.com/api/players/${userInput}`)
         .then(res => res.json())
         .then(data => setDota2Data(data))
   }, [userInput]) 
-  const [dota2DataHeroes, setDota2DataHeroes] = React.useState()
   React.useEffect(function() {
     fetch(`https://api.opendota.com/api/players/${userInput}/heroes`)
         .then(res => res.json())
         .then(data => setDota2DataHeroes(data))
   }, [userInput]) 
-  const [dota2RoleData, setDota2RoleData] = React.useState()
 React.useEffect(function() {
   fetch(`https://api.opendota.com/api/players/${userInput}/heroes?&lane_role=${userRole}`)
       .then(res => res.json())
       .then(data => setDota2RoleData(data))
 }, [userRole, userInput]) 
+React.useEffect(function() {
+  fetch(`https://api.opendota.com/api/players/${userInput}/recentMatches`)
+      .then(res => res.json())
+      .then(data => setDota2RecentData(data))
+}, [userInput])
   // User Input
   const handleChange = event => {
     setUserInput(event.target.value);
@@ -45,17 +51,18 @@ function importAll(r) {
 }
 const images = importAll(require.context('./images', false, /\.(png|jpe?g|svg)$/));
   // for loading...
-  if(dota2Data | dota2DataHeroes | dota2RoleData === undefined) return <>loading...</>
+  if(dota2Data | dota2DataHeroes | dota2RoleData | dota2RecentData === undefined) return <>loading2...</>
   
 const Array10 = dota2DataHeroes.slice(0, 10);
 const RoleArray10 = dota2RoleData.slice(0, 10);
-
+const RecentArray10 = dota2RecentData.slice(0, 10);
 const matchData = Array10.map((item) => {
   return (
     <div className="Match"> 
       <img
         className="hero-img" 
         src={`https://cdn.cloudflare.steamstatic.com${Heroes[item.hero_id].icon}`}
+        alt={Heroes[item.hero_id]}
       />
       <p className="hero-info">
         Games: {item.games} Wins: {item.win} WR: {parseFloat(100 * item.win / item.games).toFixed(1)}%
@@ -63,8 +70,22 @@ const matchData = Array10.map((item) => {
     </div>
   )
 }, [])
-
 const heroMatchData = RoleArray10.map((item) => {
+  return (
+    <div className="Match"> 
+      <img
+        className="hero-img" 
+        src={`https://cdn.cloudflare.steamstatic.com${Heroes[item.hero_id].icon}`}
+        alt={Heroes[item.hero_id]}
+      />
+      <p className="hero-info">
+        Games: {item.games} Wins: {item.wins} WR: {parseFloat(100 * item.win / item.games).toFixed(1)}%
+      </p>
+    </div>
+  )
+}, [])
+/*
+const heroRecentData = RecentArray10.map((item) => {
   return (
     <div className="Match"> 
       <img
@@ -72,18 +93,15 @@ const heroMatchData = RoleArray10.map((item) => {
         src={`https://cdn.cloudflare.steamstatic.com${Heroes[item.hero_id].icon}`}
       />
       <p className="hero-info">
-        Games: {item.kills} Wins: {item.deaths}
+        Kills: {item.kills} Deaths: {item.deaths} WR:
       </p>
     </div>
   )
-}, [])
-
-
+}, [])*/
   
   return (
     <div>
         <Navbar />
-        Lane: {userRole}
         <Profile 
           image={dota2Data.profile.avatarfull} 
           userData={dota2Data.profile.personaname}
@@ -93,6 +111,7 @@ const heroMatchData = RoleArray10.map((item) => {
           value={userInput}
           mostPlayed={matchData}
           roleRecent={heroMatchData}
+          role={userRole}
           /> 
     </div>
   )

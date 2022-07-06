@@ -3,17 +3,26 @@ import React from "react";
 export default function Profile(props) {
 
     const [Lane, setLane] = React.useState('1');
-
+    let text = "Safelane";
+    if (props.role === '1') {
+        text = "Safelane"
+    } else if (props.role === '2') {
+        text = "Mid Lane"
+    } else if (props.role === '3') {
+        text = "Offlane"
+    }
     return (
         <div className="profile-info">
             <div className="profile">
                 <img 
                     className="User-Image"
-                    src={props.image} 
+                    src={props.image}
+                    alt="user image here"
                 />
                 <img 
                     className="User-Badge"
                     src={props.userBadge}
+                    alt="user badge"
                 />
                 <p className="Player-Name">
                     {props.userData}
@@ -41,14 +50,17 @@ export default function Profile(props) {
             </div>
             <div className="public-data1">
                 Public Data1
+            </div>
+            <div className="public-data2">
+                <p className="pub2-title" >
+                    All-time {text} 
+                </p> 
                 {props.roleRecent}
             </div>
-            <div className="public-data2">Public Data2</div>
             <div className="logo">
                 <select 
                 className="Submit" 
                 onChange={props.HandleRoleChange}
- 
             >
                     <option value="1">Safelane</option>
                     <option value="2">Mid Lane</option>   
