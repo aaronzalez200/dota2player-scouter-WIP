@@ -256,17 +256,34 @@ body {
 }
 
 .submission {
-    grid-template-columns: 30% auto;
+    grid-template-columns: 30% 20% 20% 20%;
     grid-template-rows: auto;
     grid-template-areas:
-        "description entry"
+        "description entry inputTest button"
     ;
+}
+
+.Button {
+    grid-area: button;
+    color:#FB8122;
+    width: 80%;
+    height: 25px;
+    align-self: center;
+    justify-self: left;
 }
 
 .sub-description {
     grid-area: description;
     color:#FB8122;
     font-size: 2vh;
+}
+.input2 {
+    grid-area: inputTest;
+    width: 90%;
+    height: 25px;
+    border-style: solid;
+    border-color:#FB8122;
+    border-width: 2px;
 }
 
 .input-here {

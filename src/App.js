@@ -17,7 +17,23 @@ export default function App() {
   const [dota2RecentData, setDota2RecentData] = React.useState()
   const [dota2EsportsRecent, setDota2EsportsRecent] = React.useState()
   const [dota2EsportsRole, setDota2EsportsRole] = React.useState()
+  // implementing text field
+  let DataEntered = 86747043;
+  function handleChange2(event) {
+    DataEntered = (event.target.value)
+    console.log(event.target.value)
+  }
+ 
   // fetch player info
+ 
+  /*
+          React.useEffect(async() => {
+            await fetch(`https://api.opendota.com/api/players/${userInput}`)
+                .then(res => res.json())
+                .then(data => setDota2Data(data))
+          }, [userInput]) 
+  */
+  //testing above...
   React.useEffect(function() {
     fetch(`https://api.opendota.com/api/players/${userInput}`)
         .then(res => res.json())
@@ -166,6 +182,7 @@ const esportsMatchData = EsportsArray10.map((item) => {
           esportsRecent={esportsMatchData}
           esportsRole={EsportsRoleData}
           role={userRole}
+          handleChange2={handleChange2}
           /> 
     </div>
   )

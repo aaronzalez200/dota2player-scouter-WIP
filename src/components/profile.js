@@ -44,6 +44,20 @@ export default function Profile(props) {
                     onChange={props.handleChange}
                     value={props.userInput}
                 />
+                <input
+                    className="input2"
+                    type="text" 
+                    placeholder="Steam Id" 
+                    onChange={props.handleChange2}
+                >
+                </input>
+                <button 
+                    className="Button"
+                    id="testButton" 
+                    onClick={props.handleClick}
+                >
+                    Enter
+                </button>
             </div>
             <div className="public-matches">
                 Public Matches
