@@ -109,6 +109,8 @@ body {
     grid-area: recent;
     border-radius: 10px;
     background-color: #1D2228;
+    overflow-y: scroll;
+
 }
 
 .submission {
@@ -138,6 +140,7 @@ body {
     color: white;
     border-radius: 10px;
     background-color: #1D2228;
+    overflow-y: scroll;
 }
 .public-data2 {
     display: grid;
@@ -146,6 +149,7 @@ body {
     color: white;
     border-radius: 10px;
     background-color: #1D2228;
+    overflow-y: scroll;
 }
 
 .Map {
@@ -166,10 +170,10 @@ body {
     display: grid;
     grid-area: e1;
     align-items: center;
-    justify-items: center;
     color: white;
     border-radius: 10px;
     background-color: #1D2228;
+    overflow-y: scroll;
 }
 
 .logo {
@@ -189,11 +193,13 @@ body {
     color: white;
     border-radius: 10px;
     background-color: #1D2228;
+    overflow-y: scroll;
 }
 
 .Match {
     display: grid;
     color: white;
+    padding: 8px 0px;
     grid-template-columns: 10% auto;
     grid-template-rows: 50%;
     grid-template-areas: 
@@ -272,6 +278,13 @@ body {
     border-width: 2px;
 }
 
+.esports-title {
+    color:#FB8122;
+    font-size: 20px;
+    padding: 20px;
+    justify-self: center;
+}
+
 .Submit {
     text-align: center;
     width: 150px;
@@ -298,8 +311,8 @@ body {
         display: grid;
         gap: 1rem;
         height: 90vh;
-        grid-template-columns: repeat(4, 20%) auto;
-        grid-template-rows: 10% 13% auto;
+        grid-template-columns: 20% 18% 20% 18% auto;
+        grid-template-rows: 10% 13% 70%;
         grid-template-areas:
             "profile submit submit logo logo"
             "profile pub-matches pub-matches e-matches e-matches"

@@ -71,8 +71,18 @@ export default function Profile(props) {
                 </select>
             </div>
             <div className="esports-matches">Esports Matches</div>
-            <div className="esports-data1">Esports Data1</div>
-            <div className="esports-data2">Esports Data2</div>
+            <div className="esports-data1">
+                <p className="esports-title">
+                    Recent Competitive
+                </p>
+                {props.esportsRecent}
+                </div>
+            <div className="esports-data2">
+                <p className="esports-title">
+                    All-time Comp
+                </p>
+                {props.esportsRole}
+            </div>
         </div>
     )
 }
