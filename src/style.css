@@ -135,7 +135,6 @@ body {
     display: grid;
     grid-area: pub1;
     align-items: center;
-    justify-items: center;
     color: white;
     border-radius: 10px;
     background-color: #1D2228;
@@ -144,12 +143,15 @@ body {
     display: grid;
     grid-area: pub2;
     align-items: center;
-    justify-items: center;
     color: white;
     border-radius: 10px;
     background-color: #1D2228;
 }
 
+.Map {
+    color:#FB8122;
+    float: right;
+}
 .esports-matches {
     display: grid;
     grid-area: e-matches;
@@ -209,16 +211,35 @@ body {
 
 .hero-info {
     grid-area: hero-info;
-    justify-self: center;
+    justify-self: start;
+    padding-left: 20px;
     align-self: center;
     font-size: 1vw;
 }
 
+.pub1-title {
+    color:#FB8122;
+    font-size: 20px;
+    padding: 20px;
+    justify-self: center;
+}
 .pub2-title {
     color:#FB8122;
     font-size: 20px;
     padding: 20px;
     justify-self: center;
+}
+
+.Result1 {
+    color: Green;
+    float: left;
+    padding-right: 10px;
+}
+
+.Result2 {
+    color: Red;
+    float: left;
+    padding-right: 10px;
 }
 
 .recent-title {

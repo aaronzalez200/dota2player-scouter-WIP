@@ -31,7 +31,7 @@ React.useEffect(function() {
       .then(res => res.json())
       .then(data => setDota2RoleData(data))
 }, [userRole, userInput]) 
-React.useEffect(function() {
+ React.useEffect(function() {
   fetch(`https://api.opendota.com/api/players/${userInput}/recentMatches`)
       .then(res => res.json())
       .then(data => setDota2RecentData(data))
@@ -51,11 +51,12 @@ function importAll(r) {
 }
 const images = importAll(require.context('./images', false, /\.(png|jpe?g|svg)$/));
   // for loading...
-  if(dota2Data | dota2DataHeroes | dota2RoleData | dota2RecentData === undefined) return <>loading2...</>
+  if(dota2Data | dota2DataHeroes | dota2RoleData === undefined) return <>loading2...</>
   
 const Array10 = dota2DataHeroes.slice(0, 10);
 const RoleArray10 = dota2RoleData.slice(0, 10);
 const RecentArray10 = dota2RecentData.slice(0, 10);
+// Mapping Data Below
 const matchData = Array10.map((item) => {
   return (
     <div className="Match"> 
@@ -84,21 +85,25 @@ const heroMatchData = RoleArray10.map((item) => {
     </div>
   )
 }, [])
-/*
-const heroRecentData = RecentArray10.map((item) => {
+
+ const heroRecentData = RecentArray10.map((item) => {
   return (
     <div className="Match"> 
-      <img
+     <img
         className="hero-img" 
         src={`https://cdn.cloudflare.steamstatic.com${Heroes[item.hero_id].icon}`}
       />
-      <p className="hero-info">
-        Kills: {item.kills} Deaths: {item.deaths} WR:
-      </p>
+      <div className="hero-info">
+        KDA: {item.kills}/{item.deaths}/{item.assists}&nbsp;{item.player_slot <= 127 ? <p className="Map"> Team: Radiant</p>: <p className="Map"> Team: Dire</p>}
+        {item.player_slot <= 127 && item.radiant_win ? <p className="Result1">Won</p> : ''}
+        {item.player_slot <= 127 && !item.radiant_win ? <p className="Result2">Loss</p> : ''}
+        {item.player_slot > 127 && !item.radiant_win ? <p className="Result1">Won</p> : ''}
+        {item.player_slot > 127 && item.radiant_win ?  <p className="Result2">Loss</p> : ''}
+      </div>
     </div>
   )
-}, [])*/
-  
+}, [])
+
   return (
     <div>
         <Navbar />
@@ -109,6 +114,7 @@ const heroRecentData = RecentArray10.map((item) => {
           handleChange={handleChange}
           HandleRoleChange={handleRoleChange}
           value={userInput}
+          recent={heroRecentData}
           mostPlayed={matchData}
           roleRecent={heroMatchData}
           role={userRole}

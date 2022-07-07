@@ -49,7 +49,10 @@ export default function Profile(props) {
                 Public Matches
             </div>
             <div className="public-data1">
-                Public Data1
+                <p className="pub2-title" >
+                    Recent Matches 
+                </p> 
+                {props.recent}
             </div>
             <div className="public-data2">
                 <p className="pub2-title" >
@@ -61,11 +64,11 @@ export default function Profile(props) {
                 <select 
                 className="Submit" 
                 onChange={props.HandleRoleChange}
-            >
+                >
                     <option value="1">Safelane</option>
                     <option value="2">Mid Lane</option>   
                     <option value="3">Offlane</option>
-            </select>
+                </select>
             </div>
             <div className="esports-matches">Esports Matches</div>
             <div className="esports-data1">Esports Data1</div>
