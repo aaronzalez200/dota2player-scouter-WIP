@@ -149,8 +149,12 @@ function importAll(r) {
 }
 const images = importAll(require.context('./images', false, /\.(png|jpe?g|svg)$/));
   // for loading...
-  if(dota2Data | dota2DataHeroes | dota2RoleData | dota2EsportsRole | dota2RecentData | dota2EsportsRecent === undefined) return <>loading2...</>
-  
+  if(dota2Data === undefined) return <>loading 1</>
+  if(dota2DataHeroes === undefined) return <>loading 2</>
+  if(dota2RoleData === undefined) return <>loading 3</>
+  if(dota2EsportsRole === undefined) return <>loading 4</>
+  if(dota2RecentData === undefined) return <>loading 5</>
+  if(dota2EsportsRecent === undefined) return <>loading 6</>
 // Mapping Data Below
 const matchData = dota2DataHeroes.map((item) => {
   return (
