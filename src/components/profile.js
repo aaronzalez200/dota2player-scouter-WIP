@@ -37,18 +37,12 @@ export default function Profile(props) {
                     Paste steam-id:
                 </p>
                 <input
-                    className="input-here"
-                    type="text"
-                    id="message"
-                    name="message"
-                    onChange={props.handleChange}
-                    value={props.userInput}
-                />
-                <input
                     className="input2"
-                    type="text" 
+                    id="steam-id-input"
+                    type="search" 
                     placeholder="Steam Id" 
                     onChange={props.handleChange2}
+                    onKeyPress={props.onEnter}
                 >
                 </input>
                 <button 
