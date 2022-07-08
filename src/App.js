@@ -39,13 +39,19 @@ export default function App() {
         .then(res => res.json())
         .then(data => setDota2Data(data))
   }, [userInput]) 
+// Testing Async and Fetch Below
 
-  React.useEffect(function () {
-    fetch(`https://api.opendota.com/api/players/${userInput}/heroes`)
-        .then(res => res.json())
-        .then(data => setDota2DataHeroes(data))
+  React.useEffect(() => {
+    // our fetching function below
+    const fetchData = async () => {
+      const response = await fetch(`https://api.opendota.com/api/players/${userInput}/heroes`);
+      const data   = await response.json()
+      setDota2DataHeroes(data.slice(0, 30));
+    }
+    fetchData()
+    .catch(console.error);;
   }, [userInput]) 
-
+/////////////////////////////////////
 React.useEffect(function () {
   fetch(`https://api.opendota.com/api/players/${userInput}/heroes?&lane_role=${userRole}`)
       .then(res => res.json())
@@ -87,13 +93,12 @@ const images = importAll(require.context('./images', false, /\.(png|jpe?g|svg)$/
   // for loading...
   if(dota2Data | dota2DataHeroes | dota2RoleData === undefined) return <>loading2...</>
   
-const Array10 = dota2DataHeroes.slice(0, 30);
 const RoleArray10 = dota2RoleData.slice(0, 20);
 const RecentArray10 = dota2RecentData.slice(0, 30);
 const EsportsArray10 = dota2EsportsRecent.slice(0, 30);
 const EsportsRole = dota2EsportsRole.slice(0, 30);
 // Mapping Data Below
-const matchData = Array10.map((item) => {
+const matchData = dota2DataHeroes.map((item) => {
   return (
     <div className="Match"> 
       <img
