@@ -265,11 +265,16 @@ body {
 
 .Button {
     grid-area: button;
-    color:#FB8122;
+    background-color:#FB8122;
+    color:#E1E2E2;
     width: 80%;
     height: 25px;
     align-self: center;
     justify-self: left;
+}
+
+.Button:Hover {
+    cursor: pointer;
 }
 
 .sub-description {

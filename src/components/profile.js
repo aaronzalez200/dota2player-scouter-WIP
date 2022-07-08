@@ -34,7 +34,7 @@ export default function Profile(props) {
             </div>
             <div className="submission">
                 <p className="sub-description">
-                    Paste steam-id:
+                    Enter User's Dota ID:
                 </p>
                 <input
                     className="input2"
@@ -54,7 +54,7 @@ export default function Profile(props) {
                 </button>
             </div>
             <div className="public-matches">
-                Public Matches
+                <h1>Public Matches</h1>
             </div>
             <div className="public-data1">
                 <p className="pub2-title" >
@@ -78,7 +78,7 @@ export default function Profile(props) {
                     <option value="3">Offlane</option>
                 </select>
             </div>
-            <div className="esports-matches">Esports Matches</div>
+            <h1 className="esports-matches">Esports Matches</h1>
             <div className="esports-data1">
                 <p className="esports-title">
                     Recent Competitive
@@ -87,7 +87,7 @@ export default function Profile(props) {
                 </div>
             <div className="esports-data2">
                 <p className="esports-title">
-                    All-time Comp
+                    All-time {text}
                 </p>
                 {props.esportsRole}
             </div>
