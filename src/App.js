@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './components/navbar';
 import Heroes from './components/heroes.json';
 import Profile from './components/profile';
+import LoadingScreen from './images/badge-85.png';
 
 export default function App() {
   // fetching player data
@@ -149,22 +150,38 @@ function importAll(r) {
 }
 const images = importAll(require.context('./images', false, /\.(png|jpe?g|svg)$/));
   // for loading...
-  if(dota2Data === undefined) return <>loading 1</>
-  if(dota2DataHeroes === undefined) return <>loading 2</>
-  if(dota2RoleData === undefined) return <>loading 3</>
-  if(dota2EsportsRole === undefined) return <>loading 4</>
-  if(dota2RecentData === undefined) return <>loading 5</>
-  if(dota2EsportsRecent === undefined) return <>loading 6</>
+  if(dota2Data === undefined) return (LoadMessage())
+  if(dota2DataHeroes === undefined) return (LoadMessage())
+  if(dota2RoleData === undefined) return (LoadMessage())
+  if(dota2EsportsRole === undefined) return (LoadMessage())
+  if(dota2RecentData === undefined) return (LoadMessage())
+  if(dota2EsportsRecent === undefined) return (LoadMessage())
 // Mapping Data Below
+
+function LoadMessage() {
+  return (
+    <div className="Loading">
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <img className="Loading-Image" src={LoadingScreen}></img>
+      <h2>Loading Website...</h2>
+      <p>Please wait</p>
+    </div>
+  )
+}
+
 const matchData = dota2DataHeroes.map((item) => {
   return (
-    <div className="Match"> 
+    <div className="Match-full"> 
       <img
-        className="hero-img" 
+        className="hero-img-full" 
         src={`https://cdn.cloudflare.steamstatic.com${Heroes[item.hero_id].icon}`}
         alt={Heroes[item.hero_id]}
       />
-      <p className="hero-info">
+      <p className="hero-info-full">
         Games: {item.games} Wins: {item.win} WR: {parseFloat(100 * item.win / item.games).toFixed(1)}%
       </p>
     </div>
@@ -172,26 +189,26 @@ const matchData = dota2DataHeroes.map((item) => {
 }, [])
 const heroMatchData = dota2RoleData.map((item) => {
   return (
-    <div className="Match"> 
+    <div className="Match-sub"> 
       <img
-        className="hero-img" 
+        className="hero-img-sub" 
         src={`https://cdn.cloudflare.steamstatic.com${Heroes[item.hero_id].icon}`}
         alt={Heroes[item.hero_id]}
       />
-      <p className="hero-info">
-        Games: {item.games} Wins: {item.wins} WR: {parseFloat(100 * item.win / item.games).toFixed(1)}%
+      <p className="hero-info-sub2">
+        Games: {item.games} Wins: {item.win} WR: {parseFloat(100 * item.win / item.games).toFixed(1)}%
       </p>
     </div>
   )
 }, [])
 const heroRecentData = dota2RecentData.map((item) => {
   return (
-    <div className="Match"> 
+    <div className="Match-sub"> 
      <img
-        className="hero-img" 
+        className="hero-img-sub" 
         src={`https://cdn.cloudflare.steamstatic.com${Heroes[item.hero_id].icon}`}
       />
-      <div className="hero-info">
+      <div className="hero-info-sub1">
         KDA: {item.kills}/{item.deaths}/{item.assists}&nbsp;{item.player_slot <= 127 ? <p className="Map"> Radiant</p>: <p className="Map"> Dire</p>}
         {item.player_slot <= 127 && item.radiant_win ? <p className="Result1">Won</p> : ''}
         {item.player_slot <= 127 && !item.radiant_win ? <p className="Result2">Loss</p> : ''}
@@ -203,14 +220,14 @@ const heroRecentData = dota2RecentData.map((item) => {
 }, [])
 const EsportsRoleData = dota2EsportsRole.map((item) => {
   return (
-    <div className="Match"> 
+    <div className="Match-sub"> 
       <img
-        className="hero-img" 
+        className="hero-img-sub" 
         src={`https://cdn.cloudflare.steamstatic.com${Heroes[item.hero_id].icon}`}
         alt={Heroes[item.hero_id]}
       />
-      <p className="hero-info">
-        Games: {item.games} Wins: {item.wins} WR: {parseFloat(100 * item.win / item.games).toFixed(1)}%
+      <p className="hero-info-sub2">
+        Games: {item.games} Wins: {item.win} WR: {parseFloat(100 * item.win / item.games).toFixed(1)}%
       </p>
     </div>
   )
@@ -218,13 +235,13 @@ const EsportsRoleData = dota2EsportsRole.map((item) => {
 
 const esportsMatchData = dota2EsportsRecent.map((item) => {
   return (
-    <div className="Match"> 
+    <div className="Match-sub"> 
       <img
-        className="hero-img" 
+        className="hero-img-sub" 
         src={`https://cdn.cloudflare.steamstatic.com${Heroes[item.hero_id].icon}`}
         alt={Heroes[item.hero_id]}
       />
-     <div className="hero-info">
+     <div className="hero-info-sub1">
         KDA: {item.kills}/{item.deaths}/{item.assists}&nbsp;{item.player_slot <= 127 ? <p className="Map"> Radiant</p>: <p className="Map"> Dire</p>}
         {item.player_slot <= 127 && item.radiant_win ? <p className="Result1">Won</p> : ''}
         {item.player_slot <= 127 && !item.radiant_win ? <p className="Result2">Loss</p> : ''}

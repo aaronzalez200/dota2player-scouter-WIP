@@ -52,14 +52,14 @@ body {
     height: 90vh;
     margin: 10px;
     grid-template-columns: auto auto;
-    grid-template-rows: 10% 30% 65% 20% 75% 20% 20% 75%;
+    grid-template-rows: 10% 20% 10% 65% 10% 65% 10% 75%;
     grid-template-areas:
         "submit submit"
         "profile profile"
+        "logo logo"
         "recent recent"
         "pub-matches pub-matches"
         "pub1 pub2"
-        "logo logo"
         "e-matches e-matches"
         "e1 e2"
         ;
@@ -69,8 +69,8 @@ body {
     grid-area: profile; 
     border-radius: 10px;
     background-color: #1D2228;
-    grid-template-columns: 30% 70%;
-    grid-template-rows: 70% 30%;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 60% 40%;
     grid-template-areas:
         "img img"
         "rank name"
@@ -79,7 +79,8 @@ body {
 
 .User-Image {
     grid-area: img;
-    height: 80%;
+    height: 100%;
+    margin-top: 30px;
     align-self: center;
     justify-self: center;
     border-radius: 50%;
@@ -90,18 +91,20 @@ body {
 .Player-Name {
     grid-area: name;
     word-wrap: break-word;
+    justify-self: start;
+    align-self: center;
+    padding: 10px;
     color: #FB8122;
-    font-size: 2vw;
-    padding-left: 10px;
+    font-size: 20px;
     overflow: hidden;
 }
 
 .User-Badge { 
     grid-area: rank;
-    width: 4vw;
+    height: 100%;
+    padding: 20px;
+    margin-left: 10px;
     justify-self: center;
-    align-self: center;
-    margin-bottom: 20px;
 }
 
 .recent {
@@ -110,7 +113,6 @@ body {
     border-radius: 10px;
     background-color: #1D2228;
     overflow-y: scroll;
-
 }
 
 .submission {
@@ -152,6 +154,14 @@ body {
     overflow-y: scroll;
 }
 
+.Loading {
+    display: grid;
+    color:#FB8122;
+    font-size: 2vw;
+    align-items: center;
+    justify-items: center;
+}
+
 .Map {
     color:#FB8122;
     float: right;
@@ -189,38 +199,37 @@ body {
     display: grid;
     grid-area: e2;
     align-items: center;
-    justify-items: center;
     color: white;
     border-radius: 10px;
     background-color: #1D2228;
     overflow-y: scroll;
 }
 
-.Match {
+.Match-sub, .Match-full {
     display: grid;
     color: white;
-    padding: 8px 0px;
-    grid-template-columns: 10% auto;
-    grid-template-rows: 50%;
+    padding: 0px;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 100%;
     grid-template-areas: 
         "hero-img hero-info"
         ;
 }
 
-.hero-img {
+.hero-img-full, .hero-img-sub {
     grid-area: hero-img;
-    padding-left: 20px;
-    width: 50px;
+    padding: 20px;
+    width: 70px;
     justify-self: center;
     align-self: center;
 }
 
-.hero-info {
+.hero-info-full, .hero-info-sub1, .hero-info-sub2 {
     grid-area: hero-info;
     justify-self: start;
-    padding-left: 20px;
+    padding: 5px;
     align-self: center;
-    font-size: 1vw;
+    font-size: 0.95vw;
 }
 
 .pub1-title {
@@ -261,6 +270,7 @@ body {
     grid-template-areas:
         "description inputTest button"
     ;
+    font-size: 1vh;
 }
 
 .Button {
@@ -300,7 +310,13 @@ body {
     border-width: 2px;
 }
 
-.esports-title {
+.esports-title1 {
+    color:#FB8122;
+    font-size: 20px;
+    padding: 20px;
+    justify-self: center;
+}
+.esports-title2 {
     color:#FB8122;
     font-size: 20px;
     padding: 20px;
@@ -325,19 +341,154 @@ body {
     text-align: center;
 }
 
-
-
-
 @media(min-width: 1000px) {
     .profile-info {
         display: grid;
         gap: 1rem;
         height: 90vh;
         grid-template-columns: 20% 18% 20% 18% auto;
-        grid-template-rows: 10% 13% 70%;
+        grid-template-rows: 10% 13% 77%;
         grid-template-areas:
             "profile submit submit logo logo"
             "profile pub-matches pub-matches e-matches e-matches"
             "recent pub1 pub2 e1 e2"
+    }
+}
+
+@media(max-width: 1000px) and (min-width: 400px) {
+    .profile {
+        display: grid;
+        grid-area: profile; 
+        border-radius: 10px;
+        background-color: #1D2228;
+        grid-template-columns: 30% 70%;
+        grid-template-rows: 60% 40%;
+        grid-template-areas:
+            "img rank"
+            "img name"
+        ;
+    }
+    .submission {
+        grid-template-columns: 75% auto;
+        grid-template-rows: 50% 50%;
+        grid-template-areas:
+            "description description" 
+            "inputTest button"
+        ;
+    }
+    .input2 {
+        width: 90%;
+        height: 60%;
+        font-size: 2vh;
+        border-style: solid;
+        border-color:#FB8122;
+        border-width: 2px;
+    }
+    .Button {
+        width: 90%;
+        height: 60%;
+        border-color:#FB8122
+    }
+    .sub-description {
+        align-items: center;
+        justify-items: center;
+    }
+    .pub1-title, .pub2-title, .esports-title1, .esports-title2 {
+        color:#FB8122;
+        font-size: 40px;
+        padding: 20px;
+        justify-self: center;
+    }
+    .recent-title{
+        color:#FB8122;
+        font-size: 50px;
+        padding: 20px;
+        justify-self: center; 
+    }
+    .User-Image {
+        grid-area: img;
+        height: 10vh;
+        margin: 0px;
+        border-radius: 50%;
+        color: #FB8122;
+        border-style: solid;
+    }
+    .Player-Name {
+        grid-area: name;
+        word-wrap: break-word;
+        justify-self: center;
+        align-self: center;
+        padding: 10px;
+        color: #FB8122;
+        font-size: 5vh;
+        overflow: hidden;
+        margin-bottom: 5vh;
+    }
+    .User-Badge { 
+        grid-area: rank;
+        height: 100%;
+        padding: 20px;
+        justify-self: center;
+        align-self: center;
+    }
+    .hero-info-full {
+        grid-area: hero-info;
+        justify-self: start;
+        align-self: center;
+        font-size: 2.8vw;
+    }  
+    .hero-info-sub2 {
+        grid-area: hero-info;
+        justify-self: start;
+        align-self: center;
+        font-size: 2vw;
+    }
+    .hero-info-sub1 {
+        grid-area: hero-info;
+        justify-self: start;
+        align-self: center;
+        font-size: 3vw;
+    }
+    .hero-img-full {
+        grid-area: hero-img;
+        padding: 20px;
+        width: 60%;
+        justify-self: center;
+        align-self: center;
+    }
+    .Match-sub {
+        background-color:#1D2228;
+        display: grid;
+        color: white;
+        padding: 0px;
+        margin: 0px;
+        grid-template-columns: 20% 80%;
+        grid-template-rows: 100%;
+        grid-template-areas: 
+            "hero-img hero-info"
+            ;
+    }
+    .hero-img-sub {
+        grid-area: hero-img;
+        padding: 20px;
+        width: 100%;
+        justify-self: center;
+        align-self: center;
+    }
+    .option {
+        font-size: 3vw;
+    }
+    .Submit {
+        text-align: center;
+        width: 30vw;
+        height: 50%;
+        color:#E1E2E2;
+        font-size: 3vh;
+        padding: 3px 10px;
+        background-color: #FB8122;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease 0s;
     }
 }
