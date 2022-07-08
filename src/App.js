@@ -39,31 +39,37 @@ export default function App() {
         .then(res => res.json())
         .then(data => setDota2Data(data))
   }, [userInput]) 
-  React.useEffect(function() {
+
+  React.useEffect(function () {
     fetch(`https://api.opendota.com/api/players/${userInput}/heroes`)
         .then(res => res.json())
         .then(data => setDota2DataHeroes(data))
   }, [userInput]) 
-React.useEffect(function() {
+
+React.useEffect(function () {
   fetch(`https://api.opendota.com/api/players/${userInput}/heroes?&lane_role=${userRole}`)
       .then(res => res.json())
       .then(data => setDota2RoleData(data))
 }, [userRole, userInput]) 
- React.useEffect(function() {
-  fetch(`https://api.opendota.com/api/players/${userInput}/recentMatches`)
+
+ React.useEffect(function () {
+ fetch(`https://api.opendota.com/api/players/${userInput}/recentMatches`)
       .then(res => res.json())
       .then(data => setDota2RecentData(data))
 }, [userInput])
+
   React.useEffect(function() {
     fetch(`https://api.opendota.com/api/players/${userInput}/Matches?lobby_type=1`)
         .then(res => res.json())
         .then(data => setDota2EsportsRecent(data))
 }, [userInput]) 
+
 React.useEffect(function() {
-  fetch(`https://api.opendota.com/api/players/${userInput}/heroes?lobby_type=1&lane_role=${userRole}`)
+   fetch(`https://api.opendota.com/api/players/${userInput}/heroes?lobby_type=1&lane_role=${userRole}`)
       .then(res => res.json())
       .then(data => setDota2EsportsRole(data))
 }, [userInput, userRole]) 
+
   // User Input
   const handleChange = event => {
     setUserInput(event.target.value);
