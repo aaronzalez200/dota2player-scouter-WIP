@@ -2,7 +2,11 @@ import React from 'react';
 import Navbar from './components/navbar';
 import Heroes from './components/heroes.json';
 import Profile from './components/profile';
+import About from './components/about';
+import Sources from './components/sources';
+import Contact from './components/contact';
 import LoadingScreen from './images/badge-85.png';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
 
 export default function App() {
   // fetching player data
@@ -10,14 +14,14 @@ export default function App() {
   // 151097735 129050083 148839639 211537238 297679279
   let steam_Id = 297679279;
 
-  const [userRole, setUserRole] = React.useState(1);
-  const [userInput, setUserInput] = React.useState(129050083);
-  const [dota2Data, setDota2Data] = React.useState();
-  const [dota2DataHeroes, setDota2DataHeroes] = React.useState()
-  const [dota2RoleData, setDota2RoleData] = React.useState()
-  const [dota2RecentData, setDota2RecentData] = React.useState()
-  const [dota2EsportsRecent, setDota2EsportsRecent] = React.useState()
-  const [dota2EsportsRole, setDota2EsportsRole] = React.useState()
+  const [userRole, setUserRole] = React.useState(1);                  //Selects lane (safelane, mid, offlane)
+  const [userInput, setUserInput] = React.useState(129050083);        //User id input
+  const [dota2Data, setDota2Data] = React.useState();                 //User profile data, such as profile avatar
+  const [dota2DataHeroes, setDota2DataHeroes] = React.useState()      //User all-time heroes
+  const [dota2RoleData, setDota2RoleData] = React.useState()          //Recent public matches filtered by role
+  const [dota2RecentData, setDota2RecentData] = React.useState()      //Recent public matches
+  const [dota2EsportsRecent, setDota2EsportsRecent] = React.useState()//Esports matches recent
+  const [dota2EsportsRole, setDota2EsportsRole] = React.useState()    //Esports matches filtered by role
   // implementing text field
   let DataEntered;
   const [enterData, setEnterData] = React.useState(242151708)
@@ -67,18 +71,6 @@ export default function App() {
     setUserInput(DataEntered)
     return data;
 }
-
-  // fetch player info
- 
-  /*
-          React.useEffect(async() => {
-            await fetch(`https://api.opendota.com/api/players/${userInput}`)
-                .then(res => res.json())
-                .then(data => setDota2Data(data))
-          }, [userInput]) 
-  */
-  //testing above...
-// Verify below...
   React.useEffect(function() {
     fetch(`https://api.opendota.com/api/players/${userInput}`)
         .then(res => res.json())
@@ -253,9 +245,41 @@ const esportsMatchData = dota2EsportsRecent.map((item) => {
 }, [])
 
   return (
-    <div>
+    <BrowserRouter>
+      <div>
         <Navbar />
-        <Profile 
+        <Routes>
+          <Route path="/" element={<Profile
+            image={dota2Data.profile.avatarfull} 
+            userData={dota2Data.profile.personaname}
+            userBadge={images[`badge-${dota2Data.rank_tier}.png`]}
+            handleChange={handleChange}
+            HandleRoleChange={handleRoleChange}
+            value={userInput}
+            recent={heroRecentData}
+            mostPlayed={matchData}
+            roleRecent={heroMatchData}
+            esportsRecent={esportsMatchData}
+            esportsRole={EsportsRoleData}
+            role={userRole}
+            DataEntered={DataEntered}
+            handleChange2={handleChange2}
+            handleClick={handleClick}
+            onEnter={handleEnter}
+            />}
+          />
+          <Route path="/About" element={<About />} />
+          <Route path="/Sources" element={<Sources />} />
+          <Route path="/Contact" element={<Contact />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  )
+}
+
+/* 
+
+ <Profile 
           image={dota2Data.profile.avatarfull} 
           userData={dota2Data.profile.personaname}
           userBadge={images[`badge-${dota2Data.rank_tier}.png`]}
@@ -272,7 +296,6 @@ const esportsMatchData = dota2EsportsRecent.map((item) => {
           handleChange2={handleChange2}
           handleClick={handleClick}
           onEnter={handleEnter}
-          /> 
-    </div>
-  )
-}
+        /> 
+
+*/
