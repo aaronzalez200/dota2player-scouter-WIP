@@ -17,7 +17,7 @@ A secondary example can be where a lane is lost early and results in your hero b
 Lane swapping can have a simliar effect.
 
 **Navigation** <br />
-React Routing has not been implemented at the time of writing so none of the navigation links above are functioning.
+React Routing implemented.
 
 ![WebsiteScouterIMG](https://user-images.githubusercontent.com/107777470/179975987-dcb437f0-7217-4351-a0f7-8471100a6ef1.png)
 ![ScouterMobile](https://user-images.githubusercontent.com/107777470/179978536-540bac36-91d5-48b2-96b6-78c266b85d52.png)
