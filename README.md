@@ -4,6 +4,8 @@ Hosted Link: https://dota2playerscouter.netlify.app
 
 This website uses the React library to create a webite that uses the OpenDota API (https://www.opendota.com/api-keys) to fetch player data for various parameters and displays them onto a single page. Mobile responsive and validates input for user id. 
 
+IDs to try: 86745912 242151708
+
 **Layout** <br />
 The website is created using Grid. The first column will display the player's most played heroes of all-time (Top 30). The 2nd column displays most recent matches (last 20). The 3rd column, along with the last, filters all-time data for the specified lane which can be changed using the dropdown menu which by default displays *Safelane*. The most played heroes within the safelane (or desired lane selected) is shown in the 3rd column (Top 20) The 4th column shows the most recent ticketed matches played by the player which is displayed as their esports matches (last 30). The 5th column shows the player's most played heroes for a selected lane (top 30).
 
