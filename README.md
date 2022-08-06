@@ -1,70 +1,23 @@
-# Getting Started with Create React App
+# Dota 2 Player Scouting Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hosted Link: https://dota2playerscouter.netlify.app
 
-## Available Scripts
+This website uses the React library to create a webite that uses the OpenDota API (https://www.opendota.com/api-keys) to fetch player data for various parameters and displays them onto a single page. Mobile responsive and validates input for user id. 
 
-In the project directory, you can run:
+**Layout** <br />
+The website is created using Grid. The first column will display the player's most played heroes of all-time (Top 30). The 2nd column displays most recent matches (last 20). The 3rd column, along with the last, filters all-time data for the specified lane which can be changed using the dropdown menu which by default displays *Safelane*. The most played heroes within the safelane (or desired lane selected) is shown in the 3rd column (Top 20) The 4th column shows the most recent ticketed matches played by the player which is displayed as their esports matches (last 30). The 5th column shows the player's most played heroes for a selected lane (top 30).
 
-### `npm start`
+**Data disclaimer** <br />
+Some data can be skewed for extreme cases in which the API detected a certain result for which lane a hero played in and result in a inaccurate winrate. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+An example of this can be on position 4 heroes. If a player has success roaming in the early-game which resulted in a won match, this win would not be entered into the array of won matches in the offlane as the game read that the player won roaming, and not in the offlane. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+A secondary example can be where a lane is lost early and results in your hero being classified as it roaming in the match. This can result in data where you won the game, despite a rough early-game, but it's not taken into account for your overall winrate in the safelane/midlane/offlane if it once again considered that your hero roamed int he match.
 
-### `npm test`
+Lane swapping can have a simliar effect.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Navigation** <br />
+React Routing implemented.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![WebsiteScouterIMG](https://user-images.githubusercontent.com/107777470/179975987-dcb437f0-7217-4351-a0f7-8471100a6ef1.png)
+![ScouterMobile](https://user-images.githubusercontent.com/107777470/179978536-540bac36-91d5-48b2-96b6-78c266b85d52.png)
